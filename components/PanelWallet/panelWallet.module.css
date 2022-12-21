@@ -1,0 +1,18 @@
+.closeButton {
+  position: absolute !important;
+  top: 5px;
+  right: 10px;
+}
+.parentModal {
+  width: 400px;
+}
+.closeButton {
+  position: absolute !important;
+  top: 5px;
+  right: 10px;
+}
+@media screen and (max-width: 567px) {
+    .parentModal{
+        width: 350px;
+    }
+}

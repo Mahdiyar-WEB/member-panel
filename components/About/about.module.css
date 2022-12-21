@@ -1,0 +1,132 @@
+.container {
+  background: #292f36;
+}
+.container h4 {
+  font-weight: 600;
+  line-height: 30px;
+}
+.container h3 {
+  line-height: 30px;
+}
+.stripeUnderline {
+  filter: invert(1);
+  width: 140px;
+  height: 35px;
+  transform: translateY(-8px);
+}
+.animatedH5 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+.animatedH5 span {
+  transform: translateY(45px);
+  display: inline-block;
+  opacity: 0;
+}
+.animatedH5 span:nth-of-type(1) {
+  animation: animatedH5 0.8s 0.1s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(2) {
+  animation: animatedH5 0.8s 0.2s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(3) {
+  animation: animatedH5 0.8s 0.3s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(4) {
+  animation: animatedH5 0.8s 0.4s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(5) {
+  animation: animatedH5 0.8s 0.5s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(6) {
+  animation: animatedH5 0.8s 0.6s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(7) {
+  animation: animatedH5 0.8s 0.7s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(8) {
+  animation: animatedH5 0.8s 0.8s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(9) {
+  animation: animatedH5 0.8s 0.9s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(10) {
+  animation: animatedH5 0.8s 1s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(11) {
+  animation: animatedH5 0.8s 1.1s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(12) {
+  animation: animatedH5 0.8s 1.2s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(13) {
+  animation: animatedH5 0.8s 1.3s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(14) {
+  animation: animatedH5 0.8s 1.4s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(15) {
+  animation: animatedH5 0.8s 1.5s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(16) {
+  animation: animatedH5 0.8s 1.6s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(17) {
+  animation: animatedH5 0.8s 1.7s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(18) {
+  animation: animatedH5 0.8s 1.8s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(19) {
+  animation: animatedH5 0.8s 1.9s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(20) {
+  animation: animatedH5 0.8s 2s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(21) {
+  animation: animatedH5 0.8s 2.1s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(22) {
+  animation: animatedH5 0.8s 2.2s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(23) {
+  animation: animatedH5 0.8s 2.3s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(24) {
+  animation: animatedH5 0.8s 2.4s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(25) {
+  animation: animatedH5 0.8s 2.5s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(26) {
+  animation: animatedH5 0.8s 2.6s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(27) {
+  animation: animatedH5 0.8s 2.7s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(28) {
+  animation: animatedH5 0.8s 2.8s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(29) {
+  animation: animatedH5 0.8s 2.9s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(30) {
+  animation: animatedH5 0.8s 3s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(31) {
+  animation: animatedH5 0.8s 3.1s ease-in-out forwards;
+}
+.animatedH5 span:nth-of-type(32) {
+  animation: animatedH5 0.8s 3.2s ease-in-out forwards;
+}
+
+@keyframes animatedH5 {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

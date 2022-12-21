@@ -1,0 +1,26 @@
+.product {
+  box-shadow: 3px 10px 10px 3px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 8px;
+}
+.productImageContainer {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -12px rgb(0 0 0 / 42%), 0 4px 25px 0 rgb(0 0 0 / 12%),
+    0 8px 10px -5px rgb(0 0 0 / 20%);
+  transform: translateY(-30px);
+  padding: 0;
+}
+.productImageContainer img {
+ width: 100%;
+}
+.productContent {
+  text-align: center;
+}
+.productFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}

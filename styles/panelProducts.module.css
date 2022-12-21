@@ -1,0 +1,20 @@
+.container {
+  position: absolute;
+  width: 75%;
+  margin-left: 25%;
+  min-height: 100vh;
+  padding: 30px 40px;
+  background: #eeeeee;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+@media screen and (max-width:1024px) {
+    .container{
+        width: 100%;
+        margin-left: 0;
+        align-items: none;
+        padding: 71px 40px 0 !important;
+    }
+}

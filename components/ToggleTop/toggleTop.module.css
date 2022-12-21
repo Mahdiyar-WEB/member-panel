@@ -1,0 +1,15 @@
+.toggleTop {
+  position: fixed !important;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  transform: translateY(200px) !important;
+  transition: all .5s linear !important;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: flex;
+  transform: translateY(0) !important;
+}

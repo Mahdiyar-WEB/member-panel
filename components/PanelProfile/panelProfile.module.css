@@ -1,0 +1,41 @@
+.text {
+  border-radius: 10px;
+  box-shadow: 5px 5px 17px #dbdbdb, -5px -5px 17px #ffffff;
+  padding: 13px 20px;
+}
+.closeButton {
+position: absolute !important;
+top:5px;
+right: 10px;
+}
+.parentModal{
+    width: 400px;
+}
+.emailText{
+    width: 18ch;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+}
+.passwordText{
+    width: 10ch;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+}
+.modal{
+    width: 500px;
+}
+
+
+@media screen and (max-width: 567px) {
+    .modal{
+        width: 350px;
+    }
+    .parentModal{
+        width: 350px;
+    }
+    .emailText{
+        width: 14ch;
+        text-overflow: ellipsis;
+        overflow: hidden !important;
+    }
+}

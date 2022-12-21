@@ -1,0 +1,14 @@
+.loading {
+  position: sticky;
+  inset: 0 0 0 0;
+  width: 75%;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  z-index: 20;
+}
+@media screen and (max-width:1024px) {
+    .loading{
+        width: 100%;
+    }
+}
