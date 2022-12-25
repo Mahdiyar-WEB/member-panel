@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "features/store.js", "features/userSlice/userSlice.js", "components/Header/Header.jsx", "components/Footer/Footer.jsx"  ],
   "exclude": [
     "node_modules"
   ]

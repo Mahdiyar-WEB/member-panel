@@ -76,16 +76,14 @@ const SignUp = () => {
 
   return (
     <form className="w-100" onSubmit={formik.handleSubmit}>
-      <Box className="row d-flex flex-column px-4 mx-1 py-3 align-items-start">
+      <Box className="row d-flex flex-column  px-4 mx-1 py-3 align-items-start">
         {Object.keys(formik.values).map(
-          //@ts-ignore
           (name, index) => {
             return (
               <FormControl key={index} fullWidth margin="normal">
                 <InputLabel
                   htmlFor={name}
                   error={
-                    //@ts-ignore
                     (formik.errors[name] && formik.touched[name] && true) ||
                     false
                   }
@@ -96,7 +94,6 @@ const SignUp = () => {
                   fullWidth
                   autoComplete="current-password"
                   key={index}
-                  // margin="normal"
                   label={name}
                   type={
                     name === "password" && !showPassword
@@ -107,7 +104,6 @@ const SignUp = () => {
                   }
                   {...formik.getFieldProps(name)}
                   error={
-                    //@ts-ignore
                     (formik.errors[name] && formik.touched[name] && true) ||
                     false
                   }
@@ -132,12 +128,10 @@ const SignUp = () => {
                 />
                 <FormHelperText
                   error={
-                    //@ts-ignore
                     formik.touched[name] && formik.errors[name] ? true : false
                   }
                 >
                   {
-                    //@ts-ignore
                     formik.touched[name] && formik.errors[name]
                   }
                 </FormHelperText>

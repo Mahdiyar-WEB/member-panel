@@ -3,21 +3,22 @@ import styles from "./about.module.css";
 import { BsTelegram } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import stripeUnderline from "../../public/stripeunderline.png";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Waypoint } from 'react-waypoint';
 
 const About = () => {
   const aboutRef = useRef();
   const [render, setRender] = useState(false);
 
   const handleScroll = () => {
-    if (aboutRef.current) {
-      aboutRef.current.classList.contains("aos-animate") && setRender(true);
-    }
+    // if (aboutRef.current) {
+    //   aboutRef.current.classList.contains("aos-animate") && setRender(true);
+    // }
+    setRender(true);
   };
-  window.addEventListener("scroll", () => {
-    handleScroll();
-  });
+  // useEffect(()=>{},[window.scro])
+
   return (
     <article
       ref={aboutRef}
@@ -33,6 +34,7 @@ const About = () => {
       <h4 className="mt-4 px-3 px-md-5">
         Our Team Is One Of The Most Professional In Providing Telegram Service
       </h4>
+      <Waypoint onEnter={()=> handleScroll()} />
       <div className="mt-4 container px-3 px-lg-5">
         {render && (
           <h5 className={styles.animatedH5}>

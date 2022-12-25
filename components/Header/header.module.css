@@ -1,0 +1,46 @@
+.container{
+    position: absolute;
+    z-index: 2;
+}
+.navbar{
+    background-color: #182752 ;
+    width: 95%;
+}
+.contentContainer{
+    max-width: 1300px;
+    width: 100%;
+    margin:  0 auto;
+    display: flex;
+}
+.menuIcon{
+    display: inline-block;
+    color: rgba(255, 255, 255, .5);
+}
+.logoutBtn{
+    background: transparent;
+    outline: none;
+    border: none;
+    color: rgba(0, 0, 0, .6);
+    font-weight: 500;
+}
+.active{
+    font-weight: 600;
+    color: #fff !important;
+}
+.active:hover{
+    color: #fff;
+}
+.link{
+    font-weight: 600;
+    color: rgba(255, 255, 255, .7) !important;
+}
+.link:link:focus{
+    color: rgba(255, 255, 255, 1) !important;
+}
+.linl:visited{
+    color: rgba(255, 255, 255, .7) !important;
+
+}
+.link:hover{
+    color: rgba(255, 255, 255, .7) !important;
+}

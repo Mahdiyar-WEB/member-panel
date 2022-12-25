@@ -15,29 +15,20 @@ const UserPanel = () => {
   const [isShow, setIsShow] = useState(false);
   const dispatch = useDispatch();
 
-  const handleCheckShow = () => {
-    if (window.innerWidth >= 1024) {
-      setIsShow(true);
-    } else {
-      setIsShow(false);
-    }
-  };
-
-  useEffect(() => {
-    handleCheckShow();
-    dispatch(handleLoggedIn());
-  }, []);
+  // useEffect(() => {
+  //   if(typeof window !== "undefined"){
+  //     if (window.innerWidth >= 1024) {
+  //       setIsShow(true);
+  //     } else {
+  //       setIsShow(false);
+  //     }
+  //   }
+  //   dispatch(handleLoggedIn());
+  // }, []);
 
   return (
     <main className="d-flex userPanel bg-white">
       {isShow && <PanelAside />}
-      {/* <PanelLayout>
-        <Routes>
-          <Route path="/" element={<PanelDialog />} />
-          <Route path="/products" element={<PanelProducts />} />
-          <Route path="/history" element={<PanelHistory />} />
-        </Routes>
-      </PanelLayout> */}
       <PanelProfile />
       <PanelWallet />
     </main>

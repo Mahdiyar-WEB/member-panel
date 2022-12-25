@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
 const FAQ = () => {
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleChange =
     (panel) => (event, isExpanded) => {
