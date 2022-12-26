@@ -20,7 +20,7 @@ import PhoneInput, {
 } from "react-phone-number-input";
 import PhoneNumber from "./PhoneNumber/PhoneNumber";
 import styles from "./signUp.module.css";
-import "react-phone-number-input/style.css";
+// import "react-phone-number-input/style.css";
 
 
 const initialValues = {
@@ -76,11 +76,11 @@ const SignUp = () => {
 
   return (
     <form className="w-100" onSubmit={formik.handleSubmit}>
-      <Box className="row d-flex flex-column  px-4 mx-1 py-3 align-items-start">
+      <Box className="row d-flex flex-column  px-4 mx-1 py-4 align-items-start">
         {Object.keys(formik.values).map(
           (name, index) => {
             return (
-              <FormControl key={index} fullWidth margin="normal">
+              <FormControl key={index} fullWidth className="px-0 my-2">
                 <InputLabel
                   htmlFor={name}
                   error={
@@ -107,6 +107,7 @@ const SignUp = () => {
                     (formik.errors[name] && formik.touched[name] && true) ||
                     false
                   }
+                  className=""
                   endAdornment={
                     name === "password" && (
                       <InputAdornment position="end">
@@ -139,7 +140,7 @@ const SignUp = () => {
             );
           }
         )}
-        <PhoneInput
+        {/* <PhoneInput
           placeholder="Enter phone number"
           className={`px-0 mt-3 ${styles.phoneInput}`}
           value={phoneDetails.value}
@@ -148,7 +149,7 @@ const SignUp = () => {
           onChange={(e) => handlePhoneChange(e)}
           inputComponent={PhoneNumber}
         />
-        {!isValidPhoneNumber(phoneDetails.validValue) && <small>invalid</small>}
+        {!isValidPhoneNumber(phoneDetails.validValue) && <small>invalid</small>} */}
         <Button
           className="mt-4 col-12 col-md-4"
           type="submit"
