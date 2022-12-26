@@ -1,13 +1,19 @@
 import styles from "./panelAside.module.css";
 import { useState } from "react";
 import UserMenu from "./UserMenu/UserMenu";
-import Link from 'next/link';
-import {MdWidgets} from "react-icons/md";
-import {FaUserClock} from "react-icons/fa";
+import Link from "next/link";
+import { MdWidgets } from "react-icons/md";
+import { FaUserClock } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const PanelAside = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
+  const handleChangeRoute = (route)=>{
+    console.log(router.pathname);
+    if(!router.pathname.includes(route)){
+      router.push(`/dashboard/${route}`)
+    }
+  }
   return (
     <aside
       className={`py-3 text-white bg-black d-flex flex-column align-items-center ${styles.container}`}
@@ -19,15 +25,17 @@ const PanelAside = () => {
         <div className={`${styles.divider} mt-2`}></div>
         <div className="d-flex flex-column w-100 py-2 px-3">
           <Link
-            href="/products"
+            href="/dashboard/products"
+            className={router.pathname === "dashboard/products" ? styles.active : styles.link}
           >
-            <MdWidgets size={25} className="me-3"/>
+            <MdWidgets size={25} className="me-3" />
             Products
           </Link>
           <Link
-            href="/history"
+            className={router.pathname === "dashboard/history" ? styles.active : styles.link}
+            href="/dashboard/history"
           >
-            <FaUserClock size={25} className="me-3"/>
+            <FaUserClock size={25} className="me-3" />
             History
           </Link>
         </div>

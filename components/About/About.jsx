@@ -29,8 +29,8 @@ const About = () => {
       data-aos-duration="800"
       data-aos-easing="linear"
     >
-      <h1 className="text-capitalize  ">about us</h1>
-      <Image src={stripeUnderline} className={styles.stripeUnderline} />
+      <p className="text-capitalize h1">about us</p>
+      <Image src={stripeUnderline} alt="signature" className={styles.stripeUnderline} />
       <h4 className="mt-4 px-3 px-md-5">
         Our Team Is One Of The Most Professional In Providing Telegram Service
       </h4>

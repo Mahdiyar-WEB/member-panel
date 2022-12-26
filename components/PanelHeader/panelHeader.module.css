@@ -1,0 +1,11 @@
+.container{
+    border-radius: 10px;
+    background: #fff;
+    color: #000;
+    display: none;
+}
+@media screen and (max-width: 1024px) {
+    .container {
+      display: flex;
+    }
+  }

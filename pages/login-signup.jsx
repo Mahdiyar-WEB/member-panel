@@ -39,7 +39,6 @@ const Login_SignUp = () => {
   };
   return (
     <>
-      <Header />
       <main className={styles.container}>
         <div className="container pb-5">
           <div className={`row d-flex ${styles.contentContainer}`}>
@@ -101,7 +100,6 @@ const Login_SignUp = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 };

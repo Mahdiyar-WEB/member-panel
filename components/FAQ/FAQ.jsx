@@ -15,9 +15,9 @@ const FAQ = () => {
 
   return (
     <article className="container px-4 my-5" id="faq">
-      <h1 className="text-center text-capitalize fw-bold mb-4">
+      <p className="h1 text-center text-capitalize fw-bold mb-4">
         Your right to know
-      </h1>
+      </p>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}

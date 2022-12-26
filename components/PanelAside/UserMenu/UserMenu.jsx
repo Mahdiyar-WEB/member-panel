@@ -18,6 +18,7 @@ import {
   handleToggleProfile,
   handleToggleWallet,
 } from "../../../features/userSlice/userSlice";
+import Image from "next/image";
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,9 @@ const UserMenu = () => {
   return (
     <>
       <div className="py-3 d-flex justify-content-start px-4 gap-2 w-100 align-items-center">
-        <Avatar src={userImage} alt="user" sx={{ width: 40, height: 40 }} />
+        <Avatar sx={{ width: 40, height: 40 }} >
+          <Image quality={100} width={60} height={40} alt="user" src={userImage} />
+        </Avatar>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={styles.togglerMenu}

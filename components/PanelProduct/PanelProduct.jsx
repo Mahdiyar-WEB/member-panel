@@ -7,8 +7,7 @@ const PanelProduct = ({ image, price, text, title }) => {
   return (
     <section className={`${styles.product} col-md-5 my-5 my-md-0`}>
       <IconButton className={`${styles.productImageContainer}`}>
-        <Image src={image} alt={image} />
-
+        <Image layout="responsive" src={image} alt={image} />
       </IconButton>
       <div className={`${styles.productContent}`}>
         <p className="text-center">{title}</p>
