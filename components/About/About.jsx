@@ -75,7 +75,7 @@ const About = () => {
       </div>
       <div className="container mt-5">
         <h3>Contact Us</h3>
-        <div className="d-flex flex-column flex-md-row justify-content-md-center gap-3 mt-4">
+        <div className="d-flex flex-nowrap  flex-row justify-content-center gap-3 mt-4">
           <a href="https://t.me/mahdiyarMN" target="_blank">
             <Button size="small" variant="contained" startIcon={<BsTelegram />}>
               Telegram

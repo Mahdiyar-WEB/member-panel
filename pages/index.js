@@ -9,12 +9,14 @@ import { useRouter } from "next/router";
 // import Image from 'next/image'
 import { Inter } from "@next/font/google";
 import styles from "../styles/index.module.css";
+import { Waypoint } from "react-waypoint";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
   const router = useRouter();
+  const [isShow, setIsShow] = useState(false);
 
   return (
     <>
@@ -28,6 +30,10 @@ export default function Home() {
       <main className={styles.container}>
         <div className={styles.landing}>
           <h1>Member Panel</h1>
+          <Waypoint
+            onLeave={() => setIsShow(true)}
+            onEnter={() => setIsShow(false)}
+          />
           <h4 className={`${styles.animatedH4}`}>
             <span>Experience </span>
             <span>Your </span>
@@ -40,7 +46,11 @@ export default function Home() {
         <Products />
         <About />
         <FAQ />
-        <ToggleTop />
+        <Waypoint
+          onEnter={() => setIsShow(false)}
+          onLeave={() => setIsShow(true)}
+        />
+        <ToggleTop isShow={isShow} />
       </main>
       <Footer />
     </>

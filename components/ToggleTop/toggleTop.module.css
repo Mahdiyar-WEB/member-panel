@@ -6,10 +6,7 @@
   transform: translateY(200px) !important;
   transition: all .5s linear !important;
 }
-.hide {
-  display: none;
-}
+
 .show {
-  display: flex;
   transform: translateY(0) !important;
 }
