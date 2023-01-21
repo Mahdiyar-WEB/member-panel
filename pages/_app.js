@@ -15,6 +15,7 @@ import PanelWallet from "../src/components/PanelWallet/PanelWallet";
 import PanelHeader from "../src/components/PanelHeader/PanelHeader";
 import Header from "../src/components/Header/Header";
 import Footer from "../src/components/Footer/Footer";
+import AdminHeader from "../src/components/AdminHeader/AdminHeader";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -39,14 +40,19 @@ export default function MyApp(props) {
         <CssBaseline />
         {router.pathname.includes("dashboard") > 0 ? (
           <>
-            <PanelAside /> <PanelHeader/> <PanelProfile />
+            <PanelAside /> <PanelHeader /> <PanelProfile />
             <PanelWallet /> <Component {...pageProps} />
+          </>
+        ) : router.pathname.includes("admin") > 0 ? (
+          <>
+            <AdminHeader />
+            <Component {...pageProps} />
           </>
         ) : (
           <>
-          <Header/>
-          <Component {...pageProps} />
-          <Footer/>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
           </>
         )}
       </CacheProvider>
