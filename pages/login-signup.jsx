@@ -8,6 +8,7 @@ import {
   CardHeader,
   Typography,
 } from "@mui/material";
+import Head from "next/head"
 import { memo, useState } from "react";
 import Login from "../src/components/Login/Login";
 import SignUp from "../src/components/SignUp/SignUp";
@@ -39,6 +40,12 @@ const Login_SignUp = () => {
   };
   return (
     <>
+     <Head>
+        <title>Login / Signup</title>
+        <meta name="description" content="login or sign up in member next" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <main className={styles.container}>
         <div className="container pb-5">
           <div className={`row d-flex ${styles.contentContainer}`}>
