@@ -9,12 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import { memo, useState } from "react";
-import Login from "../components/Login/Login";
-import SignUp from "../components/SignUp/SignUp";
+import Login from "../src/components/Login/Login";
+import SignUp from "../src/components/SignUp/SignUp";
 import styles from "../styles/signup-login.module.css";
 import logo from "../public/logo.jpg";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header/Header";
+import Footer from "../src/components/Footer/Footer";
+import Header from "../src/components/Header/Header";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;

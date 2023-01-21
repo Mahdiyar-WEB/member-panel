@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useState, MouseEvent } from "react";
 import { HiMenu } from "react-icons/hi";
-import user from "../../public/user.jpg";
+import user from "../../../public/user.jpg";
 import { MdWidgets } from "react-icons/md";
 import { FaUserClock } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";

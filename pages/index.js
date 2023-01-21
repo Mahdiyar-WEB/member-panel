@@ -1,10 +1,10 @@
-import About from "../components/About/About";
-import FAQ from "../components/FAQ/FAQ";
-import Products from "../components/Products/Products";
-import ToggleTop from "../components/ToggleTop/ToggleTop";
+import About from "../src/components/About/About";
+import FAQ from "../src/components/FAQ/FAQ";
+import Products from "../src/components/Products/Products";
+import ToggleTop from "../src/components/ToggleTop/ToggleTop";
 import Head from "next/head";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+// import Header from "../components/Header/Header";
+// import Footer from "../components/Footer/Footer";
 import { useRouter } from "next/router";
 // import Image from 'next/image'
 import { Inter } from "@next/font/google";

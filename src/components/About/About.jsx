@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import styles from "./about.module.css";
 import { BsTelegram } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
-import stripeUnderline from "../../public/stripeunderline.png";
+import stripeUnderline from "../../../public/stripeunderline.png";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Waypoint } from 'react-waypoint';

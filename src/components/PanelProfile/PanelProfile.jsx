@@ -3,7 +3,7 @@ import { Avatar, Badge, Box, Button, IconButton, Modal } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { handleToggleProfile } from "../../features/userSlice/userSlice";
 import { MdEdit } from "react-icons/md";
-import user from "../../public/user.jpg";
+import user from "../../../public/user.jpg";
 import { useRef, MutableRefObject, useState } from "react";
 import Form from "../../common/Form";
 import * as Yup from "yup";

@@ -4,17 +4,17 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "../config/createEmotionCache";
 import { Provider } from "react-redux";
-import store from "../features/store";
+import store from "../src/features/store";
 import AOS from "aos";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.css";
-import PanelAside from "../components/PanelAside/PanelAside";
-import PanelProfile from "../components/PanelProfile/PanelProfile";
-import PanelWallet from "../components/PanelWallet/PanelWallet";
-import PanelHeader from "../components/PanelHeader/PanelHeader";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import PanelAside from "../src/components/PanelAside/PanelAside";
+import PanelProfile from "../src/components/PanelProfile/PanelProfile";
+import PanelWallet from "../src/components/PanelWallet/PanelWallet";
+import PanelHeader from "../src/components/PanelHeader/PanelHeader";
+import Header from "../src/components/Header/Header";
+import Footer from "../src/components/Footer/Footer";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

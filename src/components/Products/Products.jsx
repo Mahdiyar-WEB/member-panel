@@ -8,10 +8,10 @@ import {
   Button,
 } from "@mui/material";
 import Image from "next/image";
-import service1 from "../../public/service1.svg";
-import service2 from "../../public/service2.svg";
-import service3 from "../../public/service3.svg";
-import service4 from "../../public/service4.svg";
+import service2 from "../../../public/service2.svg";
+import service1 from "../../../public/service1.svg";
+import service3 from "../../../public/service3.svg";
+import service4 from "../../../public/service4.svg";
 
 const Products = () => {
   return (

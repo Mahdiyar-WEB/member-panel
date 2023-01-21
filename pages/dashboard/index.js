@@ -1,10 +1,10 @@
-import PanelAside from "../../components/PanelAside/PanelAside";
+import PanelAside from "../../src/components/PanelAside/PanelAside";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { handleLoggedIn } from "../../features/userSlice/userSlice";
-import PanelProfile from "../../components/PanelProfile/PanelProfile";
-import PanelWallet from "../../components/PanelWallet/PanelWallet";
-import PanelDialog from "../../components/PanelDialog/PanelDialog";
+import { handleLoggedIn } from "../../src/features/userSlice/userSlice";
+import PanelProfile from "../../src/components/PanelProfile/PanelProfile";
+import PanelWallet from "../../src/components/PanelWallet/PanelWallet";
+import PanelDialog from "../../src/components/PanelDialog/PanelDialog";
 
 
 const UserPanel = () => {

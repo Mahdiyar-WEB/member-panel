@@ -1,6 +1,6 @@
 import styles from "../../styles/panelProducts.module.css";
 import { Button, IconButton } from "@mui/material";
-import PanelProduct from "../../components/PanelProduct/PanelProduct";
+import PanelProduct from "../../src/components/PanelProduct/PanelProduct";
 import product1 from "../../public/product1.jpeg";
 import product2 from "../../public/product2.jpeg";
 
