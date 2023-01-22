@@ -13,6 +13,9 @@ const AdminHeader = () => {
         <li>
           <Link className="text-white fw-bold" href="/admin/orders">Orders</Link>
         </li>
+        <li>
+          <Link className="text-white fw-bold" href="/">Logout</Link>
+        </li>
       </ul>
     </nav>
   );
