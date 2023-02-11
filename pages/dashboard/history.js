@@ -13,32 +13,32 @@ import { MdAssignment } from "react-icons/md";
 
 const History = () => {
   const [history, setHistory] = useState([
-    { product: "product1", date: "22-20-2022", price: 1 },
-    { product: "product2", date: "22-20-2022", price: 2 },
-    { product: "product3", date: "22-20-2022", price: 3 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
-    { product: "product4", date: "22-20-2022", price: 4 },
+    { product: "product1",quantity:1, date: "22-20-2022", price: 1 },
+    { product: "product2",quantity:1, date: "22-20-2022", price: 2 },
+    { product: "product3",quantity:1, date: "22-20-2022", price: 3 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
   ]);
 
   return (
@@ -57,6 +57,7 @@ const History = () => {
                 <TableRow>
                   <TableCell className="fs-6">Product</TableCell>
                   <TableCell className="fs-6" align="center">Date</TableCell>
+                  <TableCell className="fs-6" align="center">Quantity</TableCell>
                   <TableCell className="fs-6" align="center">Price</TableCell>
                 </TableRow>
               </TableHead>
@@ -72,6 +73,7 @@ const History = () => {
                       {row.product}
                     </TableCell>
                     <TableCell align="center">{row.date}</TableCell>
+                    <TableCell align="center">{row.quantity}</TableCell>
                     <TableCell align="center">${row.price}</TableCell>
                   </TableRow>
                 ))}

@@ -19,6 +19,7 @@ const AdminProduct = ({
   parentID,
   handleDelete,
   handleChangeCategory,
+  handleClickAdd
 }) => {
   const handleDeleteClick = (productID, parentID) => {
     const word = !!productID ? "product" : "category";
@@ -42,7 +43,9 @@ const AdminProduct = ({
         <Typography sx={{ fontWeight: "500" }}>{name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        { rows.length === 0 && <Typography>There is no product for this category</Typography>}
+        {rows.length === 0 && (
+          <Typography>There is no product for this category</Typography>
+        )}
         {rows.map((row, index) => {
           return (
             <>
@@ -50,11 +53,9 @@ const AdminProduct = ({
               <strong className="pb-3 pt-2 d-block">
                 {row.category} - {row.price}$
               </strong>
-              <Typography
-                key={index}
-                className="d-flex pb-3 justify-content-between align-items-baseline"
-              >
-                {row.description}
+              <Typography key={index}>{row.description}</Typography>
+              <Typography className="d-flex pb-3 justify-content-between align-items-baseline">
+                max quantity: {row.maxQuantity}
                 <ButtonGroup
                   variant="contained"
                   aria-label="outlined primary button group"
@@ -84,7 +85,7 @@ const AdminProduct = ({
           >
             Edit
           </Button>
-          <Button color="primary">Add</Button>
+          <Button onClick={() => handleClickAdd(parentID)} color="primary">Add</Button>
           <Button onClick={() => handleDeleteClick(0, parentID)} color="error">
             Delete
           </Button>

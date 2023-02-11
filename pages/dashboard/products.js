@@ -218,6 +218,7 @@ const Products = () => {
       quantity: 20,
       minQuantity: 20,
       maxQuantity: 30,
+      price:0
     },
   });
 
@@ -271,7 +272,7 @@ const Products = () => {
             {product?.subCategories.map((subCategory) => {
               return (
                 <MenuItem key={subCategory.id} value={subCategory.id}>
-                  {subCategory.category}
+                  {subCategory.category} - {subCategory.price}$
                 </MenuItem>
               );
             })}
@@ -282,6 +283,9 @@ const Products = () => {
           id="filled-multiline-static"
           label="Description"
           multiline
+          InputProps={{
+            readOnly:true
+          }}
           rows={4}
           value={product.activeSub.description}
         />
@@ -314,7 +318,7 @@ const Products = () => {
           }
         />
         <Button variant="contained" className="col-12 col-md-4">
-          Submit
+          Submit - {product.activeSub.quantity * product.activeSub.price}$
         </Button>
       </Box>
     </article>

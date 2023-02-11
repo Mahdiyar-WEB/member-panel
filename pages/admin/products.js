@@ -7,6 +7,7 @@ const products = () => {
   const [expanded, setExpanded] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const [anchorEl2, setAnchorEl2] = useState(false);
+  const [anchorEl3, setAnchorEl3] = useState(false);
 
   const [products, setProducts] = useState([
     {
@@ -20,7 +21,7 @@ const products = () => {
           price: 2,
           quantity: 0,
           minQuantity: 0,
-          maxQuantity: 30,
+          maxQuantity: 10,
         },
         {
           id: 2,
@@ -29,7 +30,7 @@ const products = () => {
           price: 1,
           quantity: 1,
           minQuantity: 1,
-          maxQuantity: 30,
+          maxQuantity: 5,
         },
         {
           id: 3,
@@ -169,6 +170,15 @@ const products = () => {
     price: 0,
     id: 0,
     parentID: 0,
+    maxQuantity: 0,
+  });
+  const [add, setAdd] = useState({
+    parentID: 0,
+    id: 0,
+    category: "",
+    description: "",
+    price: 0.25,
+    maxQuantity: 1,
   });
   const [parentName, setParentName] = useState({
     isEdit: false,
@@ -184,6 +194,15 @@ const products = () => {
   const handleChangeEdit = (details, parentID) => {
     setAnchorEl(true);
     setEdit({ ...details, parentID });
+  };
+
+  const handleChangeAdd = (parentID) => {
+    setAnchorEl3(true);
+    setAdd({ ...add, parentID });
+  };
+
+  const handleAddOnChange = (event) => {
+    setAdd({ ...add, [event.target.name]: event.target.value });
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -206,6 +225,36 @@ const products = () => {
     clonedRows[definedParentIndex].subCategories[definedProductIndex] = edit;
     setProducts(clonedRows);
     handleCloseEdit();
+  };
+
+  const handleAddProduct = () => {
+    let clonedRows = [...products];
+    const definedParentIndex = clonedRows.findIndex(
+      (row) => row.id === add.parentID
+    );
+    console.log(
+      "🚀 ~ file: products.js:235 ~ handleAddProduct ~ definedParentIndex",
+      definedParentIndex
+    );
+    console.log("length:",  clonedRows[definedParentIndex].subCategories.length );
+    delete add.parentID;
+    const newProduct = {
+      ...add,
+      minQuantity: 1,
+      quantity: 1,
+      id: clonedRows[definedParentIndex].subCategories.length + 1,
+    };
+    clonedRows[definedParentIndex].subCategories.push(newProduct);
+    setProducts(clonedRows);
+    setAdd({
+      parentID: 0,
+      id: 0,
+      category: "",
+      description: "",
+      price: 0.25,
+      maxQuantity: 1,
+    });
+    setAnchorEl3(false);
   };
 
   const handleDelete = (productID, parentID) => {
@@ -272,6 +321,7 @@ const products = () => {
             value={expanded}
             name={product.category}
             handleClickEdit={handleChangeEdit}
+            handleClickAdd={handleChangeAdd}
             handleChange={handleChange}
             key={product.id}
             parentID={product.id}
@@ -323,11 +373,88 @@ const products = () => {
             }}
             value={edit.price}
           />
+          <TextField
+            onChange={(e) => handleEditOnChange(e)}
+            type="number"
+            name="maxQuantity"
+            label="Max Quantity"
+            inputProps={{
+              min: 1,
+            }}
+            value={edit.maxQuantity}
+          />
           <div dir="rtl">
             <Button onClick={handleSubmitChanges} color="success">
               Submit
             </Button>
             <Button onClick={handleCloseEdit} className="text-secondary">
+              Cancel
+            </Button>
+          </div>
+        </Box>
+      </Modal>
+      <Modal
+        open={anchorEl3}
+        onClose={() => setAnchorEl3(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          className="d-flex flex-column gap-3"
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            bgcolor: "#fff",
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2,
+          }}
+        >
+          <TextField
+            onChange={(e) => handleAddOnChange(e)}
+            name="category"
+            label="Title"
+            value={add.category}
+          />
+          <TextField
+            label="Description"
+            name="description"
+            onChange={(e) => handleAddOnChange(e)}
+            value={add.description}
+            multiline
+            rows={4}
+          />
+          <TextField
+            onChange={(e) => handleAddOnChange(e)}
+            type="number"
+            name="price"
+            label="Price"
+            inputProps={{
+              step: "0.25",
+              min: 0.25,
+            }}
+            value={add.price}
+          />
+          <TextField
+            onChange={(e) => handleAddOnChange(e)}
+            type="number"
+            name="maxQuantity"
+            label="Max Quantity"
+            inputProps={{
+              min: 1,
+            }}
+            value={add.maxQuantity}
+          />
+          <div dir="rtl">
+            <Button onClick={handleAddProduct} color="success">
+              Submit
+            </Button>
+            <Button
+              onClick={() => setAnchorEl3(false)}
+              className="text-secondary"
+            >
               Cancel
             </Button>
           </div>
@@ -348,7 +475,9 @@ const products = () => {
           }}
         >
           <TextField
-            onChange={(e) => setParentName({...parentName,name:e.target.value})}
+            onChange={(e) =>
+              setParentName({ ...parentName, name: e.target.value })
+            }
             label="Name"
             value={parentName.name}
           />
