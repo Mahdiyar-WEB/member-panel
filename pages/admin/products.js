@@ -232,11 +232,6 @@ const products = () => {
     const definedParentIndex = clonedRows.findIndex(
       (row) => row.id === add.parentID
     );
-    console.log(
-      "🚀 ~ file: products.js:235 ~ handleAddProduct ~ definedParentIndex",
-      definedParentIndex
-    );
-    console.log("length:",  clonedRows[definedParentIndex].subCategories.length );
     delete add.parentID;
     const newProduct = {
       ...add,

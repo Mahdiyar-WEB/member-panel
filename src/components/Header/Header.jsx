@@ -95,7 +95,7 @@ const Header = () => {
               <Link
                 className="text-secondary w-100"
                 scroll={true}
-                href="/#products"
+                href="/products"
               >
                 Products
               </Link>
@@ -125,7 +125,7 @@ const Header = () => {
           </Menu>
           <div className="d-none d-lg-flex w-100 ">
             <ul className="mx-auto my-auto d-flex gap-5 h-100">
-              <Link className={styles.link} scroll={true} href="/#products">
+              <Link className={styles.link} scroll={true} href="/products">
                 Products
               </Link>
               <Link className={styles.link} scroll={true} href="/#about">
