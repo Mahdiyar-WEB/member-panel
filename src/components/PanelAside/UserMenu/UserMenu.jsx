@@ -68,7 +68,6 @@ const UserMenu = () => {
             dense
             sx={{
               borderRadius: 1,
-
               "&:hover": {
                 backgroundColor: "rgba(255,255,255,0.2)",
               },

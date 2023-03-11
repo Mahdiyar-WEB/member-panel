@@ -7,17 +7,16 @@ import {
   TableCell,
   TableBody,
   TableHead,
-  Menu,
-  MenuItem,
   IconButton,
   Button,
   Modal,
   Box,
   Typography,
-  TextField,
 } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { useRouter } from "next/router";
 
 const product = [
   {
@@ -177,6 +176,14 @@ const product = [
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [modal, setModal] = useState({
+    isShow: false,
+    category: "",
+    description: "",
+    price: "",
+  });
+  const router = useRouter();
+
   useEffect(() => {
     let subCategories = [];
     product.map((product) => {
@@ -184,22 +191,27 @@ const Products = () => {
     });
     setProducts(subCategories);
   }, []);
+
+  const handleClose = () => {
+    setModal({ isShow: false, category: "", description: "", price: "" });
+  };
+
   return (
     <>
       <main className={`${styles.container}`}>
-        <TableContainer className="px-3">
+        <TableContainer className="px-lg-5 px-md-4">
           <Table aria-label="simple table">
-            <TableHead className="bg-secondary">
+            <TableHead className="bg-primary">
               <TableRow>
-                <TableCell className="fs-6">ID</TableCell>
-                <TableCell className="fs-6">Product</TableCell>
-                <TableCell className="fs-6" align="center">
+                <TableCell className="fs-6 text-white">ID</TableCell>
+                <TableCell className="fs-6 text-white">Product</TableCell>
+                <TableCell className="fs-6 text-white" align="center">
                   Min Order
                 </TableCell>
-                <TableCell className="fs-6" align="center">
+                <TableCell className="fs-6 text-white" align="center">
                   Max Order
                 </TableCell>
-                <TableCell className="fs-6" align="center">
+                <TableCell className="fs-6 text-white" align="center">
                   Description
                 </TableCell>
               </TableRow>
@@ -207,17 +219,18 @@ const Products = () => {
 
             <TableBody>
               {products.map((row, index) => (
-                <TableRow hover key={index}>
-                  <TableCell component="th" >
-                    {index}
-                  </TableCell>
+                <TableRow
+                  className={`${index % 2 > 0 && "bg-light"}`}
+                  key={index}
+                >
+                  <TableCell component="th">{index + 1}</TableCell>
                   <TableCell align="start">{row.category}</TableCell>
                   <TableCell align="center">{row.minQuantity}</TableCell>
                   <TableCell align="center">{row.maxQuantity}</TableCell>
                   <TableCell align="center">
                     <Button
                       variant="contained"
-                      onClick={(e) => handleClickEdit(e, row)}
+                      onClick={() => setModal({ ...row, isShow: true })}
                     >
                       View
                     </Button>
@@ -227,6 +240,50 @@ const Products = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <Modal
+          open={modal.isShow}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            className={`d-flex flex-column  ${styles.parentModal}`}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "#fff",
+              boxShadow: 24,
+              p: 4,
+              borderRadius: 2,
+            }}
+          >
+            <Typography id="modal-modal-title" className="mt-3 fw-bold" variant="h6">
+              {modal.category}
+            </Typography>
+            <Typography className="border border-secondary px-2 py-2 rounded" id="modal-modal-description" sx={{ mt: 2 }}>
+              {modal.description}
+            </Typography>
+            <Typography id="modal-modal-description" className="d-flex gap-4" sx={{ mt: 2 }}>
+              <p><strong>Max Order:</strong> <span className="text-primary">{modal.maxQuantity}</span></p>
+              <p><strong>Min Order:</strong> <span className="text-primary">{modal.minQuantity}</span></p>
+            </Typography>
+            <Typography>
+              <span className="fw-bold">Price:</span> <span className="text-primary">{modal.price}$</span>
+            </Typography>
+            <Button className="mt-5" variant="contained" onClick={()=> router.push('/login-signup')}>
+              Buy
+            </Button>
+            <IconButton
+              size="small"
+              onClick={handleClose}
+              className={styles.closeButton}
+            >
+              <IoCloseSharp size={25} />
+            </IconButton>
+          </Box>
+        </Modal>
       </main>
     </>
   );

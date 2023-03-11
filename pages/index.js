@@ -3,16 +3,11 @@ import FAQ from "../src/components/FAQ/FAQ";
 import Products from "../src/components/Products/Products";
 import ToggleTop from "../src/components/ToggleTop/ToggleTop";
 import Head from "next/head";
-// import Header from "../components/Header/Header";
-// import Footer from "../components/Footer/Footer";
 import { useRouter } from "next/router";
-// import Image from 'next/image'
-import { Inter } from "@next/font/google";
 import styles from "../styles/index.module.css";
 import { Waypoint } from "react-waypoint";
 import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
@@ -40,6 +35,9 @@ export default function Home() {
             <span>With </span>
             <span>Us</span>
           </h4>
+        </div>
+        <div className={`${styles.cloudyPicture}`}>
+
         </div>
         <button onClick={() => router.push("/dashboard")}>dashboard</button>
         <button onClick={() => router.push("/admin/users")}>admin</button>
