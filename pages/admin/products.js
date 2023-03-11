@@ -8,6 +8,7 @@ const products = () => {
   const [anchorEl, setAnchorEl] = useState(false);
   const [anchorEl2, setAnchorEl2] = useState(false);
   const [anchorEl3, setAnchorEl3] = useState(false);
+  // const [selectedParent]
 
   const [products, setProducts] = useState([
     {
@@ -15,6 +16,7 @@ const products = () => {
       category: "S1",
       subCategories: [
         {
+          order: 1,
           id: 1,
           category: "S11",
           description: "This is s11",
@@ -24,6 +26,7 @@ const products = () => {
           maxQuantity: 10,
         },
         {
+          order: 2,
           id: 2,
           category: "S12",
           description: "This is s12",
@@ -33,6 +36,7 @@ const products = () => {
           maxQuantity: 5,
         },
         {
+          order: 3,
           id: 3,
           category: "S13",
           description: "This is s13",
@@ -42,6 +46,7 @@ const products = () => {
           maxQuantity: 30,
         },
         {
+          order: 4,
           id: 4,
           category: "S14",
           description: "This is s14",
@@ -52,6 +57,7 @@ const products = () => {
         },
       ],
       activeSub: {
+        order: 1,
         id: 1,
         category: "S11",
         description: "This is s11",
@@ -66,6 +72,7 @@ const products = () => {
       category: "s2",
       subCategories: [
         {
+          order: 1,
           id: 1,
           category: "S21",
           description: "This is s21",
@@ -75,6 +82,7 @@ const products = () => {
           maxQuantity: 30,
         },
         {
+          order: 2,
           id: 2,
           category: "S22",
           description: "This is s22",
@@ -84,6 +92,7 @@ const products = () => {
           maxQuantity: 30,
         },
         {
+          order: 3,
           id: 3,
           category: "S23",
           description: "This is s23",
@@ -93,6 +102,7 @@ const products = () => {
           maxQuantity: 30,
         },
         {
+          order: 4,
           id: 4,
           category: "S24",
           description: "This is s24",
@@ -103,6 +113,7 @@ const products = () => {
         },
       ],
       activeSub: {
+        order: 1,
         id: 1,
         category: "S21",
         description: "This is s21",
@@ -117,6 +128,7 @@ const products = () => {
       category: "s3",
       subCategories: [
         {
+          order: 1,
           id: 1,
           category: "S31",
           description: "This is s31",
@@ -126,6 +138,7 @@ const products = () => {
           maxQuantity: 100,
         },
         {
+          order: 2,
           id: 2,
           category: "S32",
           description: "This is s32",
@@ -135,6 +148,7 @@ const products = () => {
           maxQuantity: 100,
         },
         {
+          order: 3,
           id: 3,
           category: "S33",
           description: "This is s33",
@@ -144,6 +158,7 @@ const products = () => {
           maxQuantity: 100,
         },
         {
+          order: 4,
           id: 4,
           category: "S34",
           description: "This is s34",
@@ -154,6 +169,7 @@ const products = () => {
         },
       ],
       activeSub: {
+        order: 1,
         id: 1,
         category: "S31",
         description: "This is s31",
@@ -171,6 +187,7 @@ const products = () => {
     id: 0,
     parentID: 0,
     maxQuantity: 0,
+    wantedId: null,
   });
   const [add, setAdd] = useState({
     parentID: 0,
@@ -193,7 +210,7 @@ const products = () => {
 
   const handleChangeEdit = (details, parentID) => {
     setAnchorEl(true);
-    setEdit({ ...details, parentID });
+    setEdit({ ...details, parentID, wantedId: details.id });
   };
 
   const handleChangeAdd = (parentID) => {
@@ -214,6 +231,8 @@ const products = () => {
   };
 
   const handleSubmitChanges = () => {
+    const wantedId = +edit.wantedId;
+    delete edit.wantedId;
     let clonedRows = [...products];
     const definedParentIndex = clonedRows.findIndex(
       (row) => row.id === edit.parentID
@@ -222,7 +241,54 @@ const products = () => {
       definedParentIndex
     ].subCategories.findIndex((row) => row.id === edit.id);
     delete edit.parentID;
-    clonedRows[definedParentIndex].subCategories[definedProductIndex] = edit;
+    if(wantedId < edit.id){
+      const constantOrders = clonedRows[definedParentIndex].subCategories.filter(
+        (item) => item.id > edit.id || item.id < wantedId
+      );
+      const includingChangeOrders = clonedRows[
+        definedParentIndex
+      ].subCategories.filter((item) => item.id < edit.id && item.id >= wantedId);
+      const newOrders = includingChangeOrders.map((item) => {
+        item.id += 1;
+        return item;
+      });
+      clonedRows[definedParentIndex].subCategories[definedProductIndex] = {
+        ...edit,
+        id: wantedId,
+      };
+      clonedRows[definedParentIndex].subCategories = [
+        ...newOrders,
+        clonedRows[definedParentIndex].subCategories[definedProductIndex],
+        ...constantOrders,
+      ];
+      clonedRows[definedParentIndex].subCategories.sort(
+        (el1, el2) => el1.id - el2.id
+      );
+      
+    }else if(wantedId > edit.id){
+      const constantOrders = clonedRows[definedParentIndex].subCategories.filter(
+        (item) => item.id < edit.id || item.id > wantedId
+      );
+      const includingChangeOrders = clonedRows[
+        definedParentIndex
+      ].subCategories.filter((item) => item.id > edit.id && item.id <= wantedId);
+      const newOrders = includingChangeOrders.map((item) => {
+        item.id -= 1;
+        return item;
+      });
+      clonedRows[definedParentIndex].subCategories[definedProductIndex] = {
+        ...edit,
+        id: wantedId,
+      };
+      clonedRows[definedParentIndex].subCategories = [
+        ...newOrders,
+        clonedRows[definedParentIndex].subCategories[definedProductIndex],
+        ...constantOrders,
+      ];
+      clonedRows[definedParentIndex].subCategories.sort(
+        (el1, el2) => el1.id - el2.id
+      );
+    }
     setProducts(clonedRows);
     handleCloseEdit();
   };
@@ -377,6 +443,17 @@ const products = () => {
               min: 1,
             }}
             value={edit.maxQuantity}
+          />
+          <TextField
+            onChange={(e) => handleEditOnChange(e)}
+            type="number"
+            name="wantedId"
+            label="ID Order"
+            inputProps={{
+              min: 1,
+              max: products.find(item => item.id === edit.parentID)?.subCategories.length
+            }}
+            value={edit.wantedId}
           />
           <div dir="rtl">
             <Button onClick={handleSubmitChanges} color="success">
