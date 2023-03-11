@@ -1,5 +1,15 @@
 import styles from "./panelProfile.module.css";
-import { Avatar, Badge, Box, Button, IconButton, Modal } from "@mui/material";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  Step,
+  StepLabel,
+  Stepper,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { handleToggleProfile } from "../../features/userSlice/userSlice";
 import { MdEdit } from "react-icons/md";
@@ -8,6 +18,8 @@ import { useRef, MutableRefObject, useState } from "react";
 import Form from "../../common/Form";
 import * as Yup from "yup";
 import { IoCloseSharp } from "react-icons/io5";
+import successGif from "../../../public/success.gif";
+import Image from "next/image";
 
 function ChildModal() {
   const [open, setOpen] = useState(false);
@@ -88,6 +100,7 @@ function ChildModal() {
 
 function ChildModal2() {
   const [open, setOpen] = useState(false);
+  const [steps, setSteps] = useState(0);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -95,19 +108,33 @@ function ChildModal2() {
     setOpen(false);
   };
 
-  const formikChangeEmail = {
+  const stepsText = ["Enter email", "Enter code"];
+
+  const formikEmail = {
     validation: Yup.object({
-      new_email: Yup.string().required("email is required").email("invalid email format")
+      email: Yup.string()
+        .required("email is required")
+        .email("wrong email format"),
     }),
-    fields: [
-      { type: "email", label: "new_email" },
-    ],
+    fields: [{ type: "email", label: "email" }],
     initialValues: {
-      new_email:""
+      email: "",
     },
     submitHandler: (values) => {
       console.log(values);
-      handleClose();
+    },
+  };
+
+  const formikEmailAccess = {
+    validation: Yup.object({
+      code: Yup.string().required("code is required").min(4, "code is invalid"),
+    }),
+    fields: [{ type: "string", label: "code", attributes: { maxLength: "4" } }],
+    initialValues: {
+      code: "",
+    },
+    submitHandler: (values) => {
+      console.log(values);
     },
   };
 
@@ -117,31 +144,61 @@ function ChildModal2() {
         Edit
       </Button>
       <Modal
-        hideBackdrop
         open={open}
         onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box
           sx={{
-            position: "relative",
+            position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
-            bgcolor: "#fff",
+            maxWidth: 650,
+            bgcolor: "background.paper",
             boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-            paddingTop: 6,
+            width: "90%",
+            borderRadius: 1,
+            pt: 4,
+            pb: 3,
+            px: 1,
           }}
-          className={styles.modal}
         >
-          <Form step={3} {...formikChangeEmail} />
-          <IconButton onClick={handleClose} className={styles.closeButton}>
-            <IoCloseSharp />
-          </IconButton>
+          <Stepper className="mb-5" activeStep={steps} alternativeLabel>
+            {stepsText.map((label, index) => {
+              return (
+                <Step key={index}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+          {steps === 0 && (
+            <Form setSteps={setSteps} step={steps} {...formikEmail} />
+          )}
+          {steps === 1 && (
+            <Form setSteps={setSteps} step={steps} {...formikEmailAccess} />
+          )}
+          {steps === 2 && (
+            <div>
+              <Image
+                src={successGif}
+                className="mx-auto h-25 d-block"
+                alt="success gif"
+              />
+              <p className="text-center pt-3  h6">
+                Your Email changed successfuly
+              </p>
+              <Button
+                variant="contained"
+                className="mx-auto mt-4 d-block w-25"
+                onClick={() => handleClose()}
+              >
+                Close
+              </Button>
+            </div>
+          )}
         </Box>
       </Modal>
     </>
@@ -151,7 +208,7 @@ function ChildModal2() {
 const PanelProfile = () => {
   const { userPanel } = useSelector((state) => state.userDetails);
   const dispatch = useDispatch();
-  const fileRef = useRef() ;
+  const fileRef = useRef();
 
   const style = {
     position: "absolute",

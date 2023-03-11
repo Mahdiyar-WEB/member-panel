@@ -6,39 +6,195 @@ import {
   TableCell,
   TableBody,
   TableHead,
+  Chip,
 } from "@mui/material";
 import { useState } from "react";
 import { MdAssignment } from "react-icons/md";
 
-
 const History = () => {
   const [history, setHistory] = useState([
-    { product: "product1",quantity:1, date: "22-20-2022", price: 1 },
-    { product: "product2",quantity:1, date: "22-20-2022", price: 2 },
-    { product: "product3",quantity:1, date: "22-20-2022", price: 3 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
-    { product: "product4",quantity:1, date: "22-20-2022", price: 4 },
+    {
+      product: "product1",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 1,
+      status: "Enable",
+    },
+    {
+      product: "product2",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 2,
+      status: "Disable",
+    },
+    {
+      product: "product3",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 3,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
   ]);
 
   return (
@@ -52,13 +208,26 @@ const History = () => {
         </div>
         <div className={styles.tableContainer}>
           <TableContainer className={styles.table}>
-            <Table stickyHeader aria-label="simple table">
+            <Table
+              className="overflow-scroll"
+              stickyHeader
+              aria-label="simple table"
+            >
               <TableHead>
                 <TableRow>
                   <TableCell className="fs-6">Product</TableCell>
-                  <TableCell className="fs-6" align="center">Date</TableCell>
-                  <TableCell className="fs-6" align="center">Quantity</TableCell>
-                  <TableCell className="fs-6" align="center">Price</TableCell>
+                  <TableCell className="fs-6" align="center">
+                    Date
+                  </TableCell>
+                  <TableCell className="fs-6" align="center">
+                    Quantity
+                  </TableCell>
+                  <TableCell className="fs-6" align="center">
+                    Price
+                  </TableCell>
+                  <TableCell className="fs-6" align="center">
+                    Status
+                  </TableCell>
                 </TableRow>
               </TableHead>
 
@@ -75,6 +244,22 @@ const History = () => {
                     <TableCell align="center">{row.date}</TableCell>
                     <TableCell align="center">{row.quantity}</TableCell>
                     <TableCell align="center">${row.price}</TableCell>
+                    <TableCell align="center">
+                      {/* {row.status} */}
+                      <Chip
+                        label={row.status}
+                        className={`${
+                          row.status === "Enable"
+                            ? "bg-primary"
+                            : row.status === "Disable"
+                            ? "bg-danger"
+                            : row.status === "Completed"
+                            ? "bg-success"
+                            : row.status === "Rejected" && "bg-danger"
+                        } text-white`}
+                        variant="outlined"
+                      />
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
