@@ -1,4 +1,3 @@
-import styles from "./panelHeader.module.css";
 import {
   AppBar,
   Container,
@@ -8,13 +7,12 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Button,
   Tooltip,
   Avatar,
 } from "@mui/material";
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
-import user from "../../../public/user.jpg";
+import user from "../../public/user.jpg";
 import { MdWidgets } from "react-icons/md";
 import { FaUserClock } from "react-icons/fa";
 import { IoLogOut } from "react-icons/io5";
@@ -92,12 +90,25 @@ const PanelHeader = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const styles = {
+    top: 15,
+    left: 0,
+    width: "90%",
+    mx: "auto",
+    zIndex: 10,
+    bgcolor: "#fff",
+    color: "#000",
+    borderRadius: "10px",
+    display: "none",
+    "@media (max-width: 1024px)": {
+      display: "flex",
+    },
+  };
 
   return (
     <AppBar
       position="absolute"
-      sx={{ top: 15, left: 0, width: "90%", mx: "auto", zIndex: 10 }}
-      className={`${styles.container} `}
+      sx={styles}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>

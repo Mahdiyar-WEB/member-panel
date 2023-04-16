@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import Image from "next/image";
-import productsImage from "../../../public/productsImage.png";
+import productsImage from "../../public/productsImage.png";
 import Link from "next/link";
 
 const Products = () => {

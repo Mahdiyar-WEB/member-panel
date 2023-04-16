@@ -13,12 +13,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { handleToggleProfile } from "../../features/userSlice/userSlice";
 import { MdEdit } from "react-icons/md";
-import user from "../../../public/user.jpg";
+import user from "../../public/user.jpg";
 import { useRef, MutableRefObject, useState } from "react";
 import Form from "../../common/Form";
 import * as Yup from "yup";
 import { IoCloseSharp } from "react-icons/io5";
-import successGif from "../../../public/success.gif";
+import successGif from "../../public/success.gif";
 import Image from "next/image";
 
 function ChildModal() {

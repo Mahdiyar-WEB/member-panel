@@ -8,14 +8,15 @@ import {
   CardHeader,
   Typography,
 } from "@mui/material";
-import Head from "next/head"
+import Head from "next/head";
 import { memo, useState } from "react";
-import Login from "../src/components/Login/Login";
-import SignUp from "../src/components/SignUp/SignUp";
+import Login from "../components/Login/Login";
+import SignUp from "../components/SignUp/SignUp";
 import styles from "../styles/signup-login.module.css";
 import logo from "../public/logo.jpg";
-import Footer from "../src/components/Footer/Footer";
-import Header from "../src/components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import HomeLayout from "../components/HomeLayout/HomeLayout";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -39,12 +40,10 @@ const Login_SignUp = () => {
     setValue(newValue);
   };
   return (
-    <>
-     <Head>
+    <HomeLayout>
+      <Head>
         <title>Login / Signup</title>
         <meta name="description" content="login or sign up in member next" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
         <div className="container pb-5">
@@ -107,7 +106,7 @@ const Login_SignUp = () => {
           </div>
         </div>
       </main>
-    </>
+    </HomeLayout>
   );
 };
 

@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
+import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
+import Head from "next/head";
 
 const products = [
   {
@@ -218,7 +220,7 @@ const Products = () => {
       quantity: 20,
       minQuantity: 20,
       maxQuantity: 30,
-      price:0
+      price: 0,
     },
   });
 
@@ -240,88 +242,94 @@ const Products = () => {
   };
 
   return (
-    <article className={`${styles.container} row`}>
-      <Box className="d-flex flex-column gap-4">
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Products</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={product.id}
-            label="Products"
-            onChange={handleChange}
-          >
-            {products.map((product) => {
-              return (
-                <MenuItem key={product.id} value={product.id}>
-                  {product.category}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Service</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={product?.activeSub.id}
-            label="Service"
-            onChange={handleSubChange}
-          >
-            {product?.subCategories.map((subCategory) => {
-              return (
-                <MenuItem key={subCategory.id} value={subCategory.id}>
-                  {subCategory.category} - {subCategory.price}$
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-        <TextField
-          fullWidth
-          id="filled-multiline-static"
-          label="Description"
-          multiline
-          InputProps={{
-            readOnly:true
-          }}
-          rows={4}
-          value={product.activeSub.description}
-        />
-        <TextField
-          fullWidth
-          label="Link"
-          id="outlined-start-adornment"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">https://t.me/</InputAdornment>
-            ),
-          }}
-        />
-        <TextField
-          fullWidth
-          label="Quantity"
-          type="number"
-          InputProps={{
-            inputProps: {
-              min: product.activeSub.minQuantity,
-              max: product.activeSub.maxQuantity,
-            },
-          }}
-          value={product.activeSub.quantity}
-          onChange={(e) =>
-            setProduct({
-              ...product,
-              activeSub: { ...product.activeSub, quantity: e.target.value },
-            })
-          }
-        />
-        <Button variant="contained" className="col-12 col-md-4">
-          Submit - {product.activeSub.quantity * product.activeSub.price}$
-        </Button>
-      </Box>
-    </article>
+    <DashboardLayout>
+      <Head>
+        <title>Products</title>
+        <meta name="description" content="Available products in win panel" />
+      </Head>
+      <article className={`${styles.container} row`}>
+        <Box className="d-flex flex-column gap-4">
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Products</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={product.id}
+              label="Products"
+              onChange={handleChange}
+            >
+              {products.map((product) => {
+                return (
+                  <MenuItem key={product.id} value={product.id}>
+                    {product.category}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Service</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={product?.activeSub.id}
+              label="Service"
+              onChange={handleSubChange}
+            >
+              {product?.subCategories.map((subCategory) => {
+                return (
+                  <MenuItem key={subCategory.id} value={subCategory.id}>
+                    {subCategory.category} - {subCategory.price}$
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <TextField
+            fullWidth
+            id="filled-multiline-static"
+            label="Description"
+            multiline
+            InputProps={{
+              readOnly: true,
+            }}
+            rows={4}
+            value={product.activeSub.description}
+          />
+          <TextField
+            fullWidth
+            label="Link"
+            id="outlined-start-adornment"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">https://t.me/</InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Quantity"
+            type="number"
+            InputProps={{
+              inputProps: {
+                min: product.activeSub.minQuantity,
+                max: product.activeSub.maxQuantity,
+              },
+            }}
+            value={product.activeSub.quantity}
+            onChange={(e) =>
+              setProduct({
+                ...product,
+                activeSub: { ...product.activeSub, quantity: e.target.value },
+              })
+            }
+          />
+          <Button variant="contained" className="col-12 col-md-4">
+            Submit - {product.activeSub.quantity * product.activeSub.price}$
+          </Button>
+        </Box>
+      </article>
+    </DashboardLayout>
   );
 };
 

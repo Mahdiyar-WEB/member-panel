@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import styles from "./about.module.css";
 import { BsTelegram } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
-import stripeUnderline from "../../../public/stripeunderline.png";
+import stripeUnderline from "../../public/stripeunderline.png";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Waypoint } from 'react-waypoint';
@@ -12,22 +12,14 @@ const About = () => {
   const [render, setRender] = useState(false);
 
   const handleScroll = () => {
-    // if (aboutRef.current) {
-    //   aboutRef.current.classList.contains("aos-animate") && setRender(true);
-    // }
     setRender(true);
   };
-  // useEffect(()=>{},[window.scro])
 
   return (
     <article
       ref={aboutRef}
       id="about"
       className={`mt-5 text-white py-5 px-3 text-center ${styles.container}`}
-      data-aos="fade-up"
-      data-aos-offset="200"
-      data-aos-duration="800"
-      data-aos-easing="linear"
     >
       <p className="text-capitalize h1">about us</p>
       <Image src={stripeUnderline} alt="signature" className={styles.stripeUnderline} />

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import AdminLayout from "../../components/AdminLayout/AdminLayout";
 
 const orders = () => {
   return (
-    <main>
-        orders
-    </main>
-  )
-}
+    <AdminLayout>
+      <main>orders</main>
+    </AdminLayout>
+  );
+};
 
-export default orders
+export default orders;

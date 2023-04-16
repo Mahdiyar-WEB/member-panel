@@ -10,7 +10,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: url("../../../public/sidebar-3.jpg") no-repeat center/cover;
+  background: url("../../public/sidebar-3.jpg") no-repeat center/cover;
   min-height: 100vh;
   filter: brightness(30%);
 }

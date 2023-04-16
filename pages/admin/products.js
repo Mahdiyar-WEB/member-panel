@@ -1,7 +1,8 @@
 import { Modal, TextField, Box, Button } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import AdminProduct from "../../src/components/AdminProduct/AdminProduct";
+import AdminProduct from "../../components/AdminProduct/AdminProduct";
+import AdminLayout from "../../components/AdminLayout/AdminLayout";
 
 const products = () => {
   const [expanded, setExpanded] = useState(false);
@@ -241,13 +242,15 @@ const products = () => {
       definedParentIndex
     ].subCategories.findIndex((row) => row.id === edit.id);
     delete edit.parentID;
-    if(wantedId < edit.id){
-      const constantOrders = clonedRows[definedParentIndex].subCategories.filter(
-        (item) => item.id > edit.id || item.id < wantedId
-      );
+    if (wantedId < edit.id) {
+      const constantOrders = clonedRows[
+        definedParentIndex
+      ].subCategories.filter((item) => item.id > edit.id || item.id < wantedId);
       const includingChangeOrders = clonedRows[
         definedParentIndex
-      ].subCategories.filter((item) => item.id < edit.id && item.id >= wantedId);
+      ].subCategories.filter(
+        (item) => item.id < edit.id && item.id >= wantedId
+      );
       const newOrders = includingChangeOrders.map((item) => {
         item.id += 1;
         return item;
@@ -264,14 +267,15 @@ const products = () => {
       clonedRows[definedParentIndex].subCategories.sort(
         (el1, el2) => el1.id - el2.id
       );
-      
-    }else if(wantedId > edit.id){
-      const constantOrders = clonedRows[definedParentIndex].subCategories.filter(
-        (item) => item.id < edit.id || item.id > wantedId
-      );
+    } else if (wantedId > edit.id) {
+      const constantOrders = clonedRows[
+        definedParentIndex
+      ].subCategories.filter((item) => item.id < edit.id || item.id > wantedId);
       const includingChangeOrders = clonedRows[
         definedParentIndex
-      ].subCategories.filter((item) => item.id > edit.id && item.id <= wantedId);
+      ].subCategories.filter(
+        (item) => item.id > edit.id && item.id <= wantedId
+      );
       const newOrders = includingChangeOrders.map((item) => {
         item.id -= 1;
         return item;
@@ -368,205 +372,208 @@ const products = () => {
   };
 
   return (
-    <main>
-      <div className="px-4 py-3" dir="rtl">
-        <Button onClick={() => setAnchorEl2(true)} variant="contained">
-          Add Category
-        </Button>
-      </div>
-      {products.map((product) => {
-        return (
-          <AdminProduct
-            handleDelete={handleDelete}
-            rows={product.subCategories}
-            value={expanded}
-            name={product.category}
-            handleClickEdit={handleChangeEdit}
-            handleClickAdd={handleChangeAdd}
-            handleChange={handleChange}
-            key={product.id}
-            parentID={product.id}
-            handleChangeCategory={handleChangeCategory}
-          />
-        );
-      })}
-      <Modal
-        open={anchorEl}
-        onClose={handleCloseEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box
-          className="d-flex flex-column gap-3"
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "#fff",
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
+    <AdminLayout>
+      <main>
+        <div className="px-4 py-3" dir="rtl">
+          <Button onClick={() => setAnchorEl2(true)} variant="contained">
+            Add Category
+          </Button>
+        </div>
+        {products.map((product) => {
+          return (
+            <AdminProduct
+              handleDelete={handleDelete}
+              rows={product.subCategories}
+              value={expanded}
+              name={product.category}
+              handleClickEdit={handleChangeEdit}
+              handleClickAdd={handleChangeAdd}
+              handleChange={handleChange}
+              key={product.id}
+              parentID={product.id}
+              handleChangeCategory={handleChangeCategory}
+            />
+          );
+        })}
+        <Modal
+          open={anchorEl}
+          onClose={handleCloseEdit}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-          <TextField
-            onChange={(e) => handleEditOnChange(e)}
-            name="category"
-            label="Title"
-            value={edit.category}
-          />
-          <TextField
-            label="Description"
-            name="description"
-            onChange={(e) => handleEditOnChange(e)}
-            value={edit.description}
-            multiline
-            rows={4}
-          />
-          <TextField
-            onChange={(e) => handleEditOnChange(e)}
-            type="number"
-            name="price"
-            label="Price"
-            inputProps={{
-              step: "0.25",
-              min: 0.25,
+          <Box
+            className="d-flex flex-column gap-3"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "#fff",
+              boxShadow: 24,
+              p: 4,
+              borderRadius: 2,
             }}
-            value={edit.price}
-          />
-          <TextField
-            onChange={(e) => handleEditOnChange(e)}
-            type="number"
-            name="maxQuantity"
-            label="Max Quantity"
-            inputProps={{
-              min: 1,
-            }}
-            value={edit.maxQuantity}
-          />
-          <TextField
-            onChange={(e) => handleEditOnChange(e)}
-            type="number"
-            name="wantedId"
-            label="ID Order"
-            inputProps={{
-              min: 1,
-              max: products.find(item => item.id === edit.parentID)?.subCategories.length
-            }}
-            value={edit.wantedId}
-          />
-          <div dir="rtl">
-            <Button onClick={handleSubmitChanges} color="success">
-              Submit
-            </Button>
-            <Button onClick={handleCloseEdit} className="text-secondary">
-              Cancel
-            </Button>
-          </div>
-        </Box>
-      </Modal>
-      <Modal
-        open={anchorEl3}
-        onClose={() => setAnchorEl3(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box
-          className="d-flex flex-column gap-3"
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "#fff",
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
+          >
+            <TextField
+              onChange={(e) => handleEditOnChange(e)}
+              name="category"
+              label="Title"
+              value={edit.category}
+            />
+            <TextField
+              label="Description"
+              name="description"
+              onChange={(e) => handleEditOnChange(e)}
+              value={edit.description}
+              multiline
+              rows={4}
+            />
+            <TextField
+              onChange={(e) => handleEditOnChange(e)}
+              type="number"
+              name="price"
+              label="Price"
+              inputProps={{
+                step: "0.25",
+                min: 0.25,
+              }}
+              value={edit.price}
+            />
+            <TextField
+              onChange={(e) => handleEditOnChange(e)}
+              type="number"
+              name="maxQuantity"
+              label="Max Quantity"
+              inputProps={{
+                min: 1,
+              }}
+              value={edit.maxQuantity}
+            />
+            <TextField
+              onChange={(e) => handleEditOnChange(e)}
+              type="number"
+              name="wantedId"
+              label="ID Order"
+              inputProps={{
+                min: 1,
+                max: products.find((item) => item.id === edit.parentID)
+                  ?.subCategories.length,
+              }}
+              value={edit.wantedId}
+            />
+            <div dir="rtl">
+              <Button onClick={handleSubmitChanges} color="success">
+                Submit
+              </Button>
+              <Button onClick={handleCloseEdit} className="text-secondary">
+                Cancel
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+        <Modal
+          open={anchorEl3}
+          onClose={() => setAnchorEl3(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-          <TextField
-            onChange={(e) => handleAddOnChange(e)}
-            name="category"
-            label="Title"
-            value={add.category}
-          />
-          <TextField
-            label="Description"
-            name="description"
-            onChange={(e) => handleAddOnChange(e)}
-            value={add.description}
-            multiline
-            rows={4}
-          />
-          <TextField
-            onChange={(e) => handleAddOnChange(e)}
-            type="number"
-            name="price"
-            label="Price"
-            inputProps={{
-              step: "0.25",
-              min: 0.25,
+          <Box
+            className="d-flex flex-column gap-3"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "#fff",
+              boxShadow: 24,
+              p: 4,
+              borderRadius: 2,
             }}
-            value={add.price}
-          />
-          <TextField
-            onChange={(e) => handleAddOnChange(e)}
-            type="number"
-            name="maxQuantity"
-            label="Max Quantity"
-            inputProps={{
-              min: 1,
+          >
+            <TextField
+              onChange={(e) => handleAddOnChange(e)}
+              name="category"
+              label="Title"
+              value={add.category}
+            />
+            <TextField
+              label="Description"
+              name="description"
+              onChange={(e) => handleAddOnChange(e)}
+              value={add.description}
+              multiline
+              rows={4}
+            />
+            <TextField
+              onChange={(e) => handleAddOnChange(e)}
+              type="number"
+              name="price"
+              label="Price"
+              inputProps={{
+                step: "0.25",
+                min: 0.25,
+              }}
+              value={add.price}
+            />
+            <TextField
+              onChange={(e) => handleAddOnChange(e)}
+              type="number"
+              name="maxQuantity"
+              label="Max Quantity"
+              inputProps={{
+                min: 1,
+              }}
+              value={add.maxQuantity}
+            />
+            <div dir="rtl">
+              <Button onClick={handleAddProduct} color="success">
+                Submit
+              </Button>
+              <Button
+                onClick={() => setAnchorEl3(false)}
+                className="text-secondary"
+              >
+                Cancel
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+        <Modal open={anchorEl2} onClose={() => setAnchorEl2(false)}>
+          <Box
+            className="d-flex flex-column gap-3"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "#fff",
+              boxShadow: 24,
+              p: 4,
+              borderRadius: 2,
             }}
-            value={add.maxQuantity}
-          />
-          <div dir="rtl">
-            <Button onClick={handleAddProduct} color="success">
-              Submit
-            </Button>
-            <Button
-              onClick={() => setAnchorEl3(false)}
-              className="text-secondary"
-            >
-              Cancel
-            </Button>
-          </div>
-        </Box>
-      </Modal>
-      <Modal open={anchorEl2} onClose={() => setAnchorEl2(false)}>
-        <Box
-          className="d-flex flex-column gap-3"
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "#fff",
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
-        >
-          <TextField
-            onChange={(e) =>
-              setParentName({ ...parentName, name: e.target.value })
-            }
-            label="Name"
-            value={parentName.name}
-          />
-          <div dir="rtl">
-            <Button onClick={handleAddEditParent} color="success">
-              Submit
-            </Button>
-            <Button
-              onClick={() => setAnchorEl2(false)}
-              className="text-secondary"
-            >
-              Cancel
-            </Button>
-          </div>
-        </Box>
-      </Modal>
-    </main>
+          >
+            <TextField
+              onChange={(e) =>
+                setParentName({ ...parentName, name: e.target.value })
+              }
+              label="Name"
+              value={parentName.name}
+            />
+            <div dir="rtl">
+              <Button onClick={handleAddEditParent} color="success">
+                Submit
+              </Button>
+              <Button
+                onClick={() => setAnchorEl2(false)}
+                className="text-secondary"
+              >
+                Cancel
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+      </main>
+    </AdminLayout>
   );
 };
 

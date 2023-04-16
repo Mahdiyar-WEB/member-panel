@@ -10,7 +10,7 @@ import styles from "./userMenu.module.css";
 import { IoLogOut } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoMdArrowDropdown, IoIosWallet } from "react-icons/io";
-import userImage from "../../../../public/user.jpg";
+import userImage from "../../../public/user.jpg";
 import { useDispatch } from "react-redux";
 import { useRouter } from 'next/router';
 import {

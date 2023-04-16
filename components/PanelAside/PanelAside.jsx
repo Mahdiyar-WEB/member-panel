@@ -1,5 +1,4 @@
 import styles from "./panelAside.module.css";
-import { useState } from "react";
 import UserMenu from "./UserMenu/UserMenu";
 import Link from "next/link";
 import { MdWidgets } from "react-icons/md";
@@ -8,12 +7,7 @@ import { useRouter } from "next/router";
 
 const PanelAside = () => {
   const router = useRouter();
-  const handleChangeRoute = (route)=>{
-    console.log(router.pathname);
-    if(!router.pathname.includes(route)){
-      router.push(`/dashboard/${route}`)
-    }
-  }
+
   return (
     <aside
       className={`py-3 text-white bg-black d-flex flex-column align-items-center ${styles.container}`}

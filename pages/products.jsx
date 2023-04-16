@@ -17,6 +17,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useRouter } from "next/router";
+import HomeLayout from "../components/HomeLayout/HomeLayout";
+import Head from "next/head";
 
 const product = [
   {
@@ -197,7 +199,11 @@ const Products = () => {
   };
 
   return (
-    <>
+    <HomeLayout>
+      <Head>
+        <title>Products</title>
+        <meta name="description" content="products in win panel" />
+      </Head>
       <main className={`${styles.container}`}>
         <TableContainer className="px-lg-5 px-md-4">
           <Table aria-label="simple table">
@@ -259,20 +265,43 @@ const Products = () => {
               borderRadius: 2,
             }}
           >
-            <Typography id="modal-modal-title" className="mt-3 fw-bold" variant="h6">
+            <Typography
+              id="modal-modal-title"
+              className="mt-3 fw-bold"
+              variant="h6"
+            >
               {modal.category}
             </Typography>
-            <Typography className="border border-secondary px-2 py-2 rounded" id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              className="border border-secondary px-2 py-2 rounded"
+              id="modal-modal-description"
+              sx={{ mt: 2 }}
+            >
               {modal.description}
             </Typography>
-            <Typography id="modal-modal-description" className="d-flex gap-4" sx={{ mt: 2 }}>
-              <p><strong>Max Order:</strong> <span className="text-primary">{modal.maxQuantity}</span></p>
-              <p><strong>Min Order:</strong> <span className="text-primary">{modal.minQuantity}</span></p>
+            <Typography
+              id="modal-modal-description"
+              className="d-flex gap-4"
+              sx={{ mt: 2 }}
+            >
+              <p>
+                <strong>Max Order:</strong>{" "}
+                <span className="text-primary">{modal.maxQuantity}</span>
+              </p>
+              <p>
+                <strong>Min Order:</strong>{" "}
+                <span className="text-primary">{modal.minQuantity}</span>
+              </p>
             </Typography>
             <Typography>
-              <span className="fw-bold">Price:</span> <span className="text-primary">{modal.price}$</span>
+              <span className="fw-bold">Price:</span>{" "}
+              <span className="text-primary">{modal.price}$</span>
             </Typography>
-            <Button className="mt-5" variant="contained" onClick={()=> router.push('/login-signup')}>
+            <Button
+              className="mt-5"
+              variant="contained"
+              onClick={() => router.push("/login-signup")}
+            >
               Buy
             </Button>
             <IconButton
@@ -285,7 +314,7 @@ const Products = () => {
           </Box>
         </Modal>
       </main>
-    </>
+    </HomeLayout>
   );
 };
 

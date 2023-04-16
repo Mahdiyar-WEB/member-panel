@@ -16,6 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import { FcFilledFilter } from "react-icons/fc";
+import AdminLayout from "../../components/AdminLayout/AdminLayout";
 
 const users = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -108,161 +109,163 @@ const users = () => {
   };
 
   return (
-    <main>
-      <TableContainer className="px-3">
-        <Table aria-label="simple table">
-          <TableHead className="bg-secondary">
-            <TableRow>
-              <TableCell className="fs-6">users</TableCell>
-              <TableCell className="fs-6" align="center">
-                join date
-              </TableCell>
-              <TableCell className="fs-6" align="center">
-                account balance
-                <IconButton
-                  onClick={handleClickFilter}
-                  size="small"
-                  sx={{ ml: 2 }}
-                  aria-controls={open ? "account-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                >
-                  <FcFilledFilter size={20} />
-                </IconButton>
-                <Menu
-                  anchorEl={anchorEl}
-                  id="account-menu"
-                  open={open}
-                  onClose={handleClose}
-                  onClick={handleClose}
-                  PaperProps={{
-                    elevation: 0,
-                    sx: {
-                      overflow: "visible",
-                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                      mt: 1.5,
-                      bgcolor: "#fff",
-                      width: 180,
-                      "& .MuiAvatar-root": {
-                        width: 42,
-                        height: 32,
-                        ml: -0.5,
-                        mr: 1,
-                      },
-                      "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: "background.paper",
-                        transform: "translateY(-50%) rotate(45deg)",
-                        zIndex: 0,
-                      },
-                    },
-                  }}
-                  transformOrigin={{ horizontal: "right", vertical: "top" }}
-                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                >
-                  <MenuItem className="ps-0 pe-0">
-                    <button
-                      onClick={handleFilter}
-                      className="text-secondary w-100 btn border-0 "
-                    >
-                      Ascending
-                    </button>
-                  </MenuItem>
-                  <MenuItem className="ps-0 pe-0">
-                    <button
-                      onClick={handleFilter}
-                      className="text-secondary w-100 btn border-0"
-                    >
-                      Descending
-                    </button>
-                  </MenuItem>
-                </Menu>
-              </TableCell>
-              <TableCell className="fs-6" align="center">
-                actions
-              </TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {users.map((row, index) => (
-              <TableRow hover key={index}>
-                <TableCell component="th" scope="row">
-                  {row.user}
+    <AdminLayout>
+      <main>
+        <TableContainer className="px-3">
+          <Table aria-label="simple table">
+            <TableHead className="bg-secondary">
+              <TableRow>
+                <TableCell className="fs-6">users</TableCell>
+                <TableCell className="fs-6" align="center">
+                  join date
                 </TableCell>
-                <TableCell align="center">{row.date}</TableCell>
-                <TableCell align="center">{row.price}$</TableCell>
-                <TableCell align="center">
-                  <Button
-                    color={row.isBan ? "warning" : "error"}
-                    onClick={() => handleBanUser(row.id)}
-                    variant="contained"
-                    className="me-2"
+                <TableCell className="fs-6" align="center">
+                  account balance
+                  <IconButton
+                    onClick={handleClickFilter}
+                    size="small"
+                    sx={{ ml: 2 }}
+                    aria-controls={open ? "account-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
                   >
-                    {row.isBan ? "un-ban" : "ban"}
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={(e) => handleClickEdit(e, row)}
+                    <FcFilledFilter size={20} />
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        bgcolor: "#fff",
+                        width: 180,
+                        "& .MuiAvatar-root": {
+                          width: 42,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "background.paper",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
-                    Edit balance
-                  </Button>
+                    <MenuItem className="ps-0 pe-0">
+                      <button
+                        onClick={handleFilter}
+                        className="text-secondary w-100 btn border-0 "
+                      >
+                        Ascending
+                      </button>
+                    </MenuItem>
+                    <MenuItem className="ps-0 pe-0">
+                      <button
+                        onClick={handleFilter}
+                        className="text-secondary w-100 btn border-0"
+                      >
+                        Descending
+                      </button>
+                    </MenuItem>
+                  </Menu>
+                </TableCell>
+                <TableCell className="fs-6" align="center">
+                  actions
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Modal
-        open={open2}
-        onClose={handleCloseEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box
-          className={`d-flex align-items-center gap-5`}
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "#fff",
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
+            </TableHead>
+
+            <TableBody>
+              {users.map((row, index) => (
+                <TableRow hover key={index}>
+                  <TableCell component="th" scope="row">
+                    {row.user}
+                  </TableCell>
+                  <TableCell align="center">{row.date}</TableCell>
+                  <TableCell align="center">{row.price}$</TableCell>
+                  <TableCell align="center">
+                    <Button
+                      color={row.isBan ? "warning" : "error"}
+                      onClick={() => handleBanUser(row.id)}
+                      variant="contained"
+                      className="me-2"
+                    >
+                      {row.isBan ? "un-ban" : "ban"}
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={(e) => handleClickEdit(e, row)}
+                    >
+                      Edit balance
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Modal
+          open={open2}
+          onClose={handleCloseEdit}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
         >
-          <div className="d-flex flex-column">
-            <Typography variant="h6">user: {editUser.user}</Typography>
-            <Typography variant="h6" sx={{ mt: 1 }}>
-              user id: {editUser.id}
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Current Price: {editUser.price}$
-            </Typography>
-          </div>
-          <div className="d-flex flex-column gap-3">
-            <TextField
-              type="number"
-              defaultValue={0}
-              value={editUser.balance}
-              onChange={(e) =>
-                setEditUser({ ...editUser, balance: +e.target.value })
-              }
-            />
-            <Button variant="contained" onClick={() => handleSubmitEdit()}>
-              submit
-            </Button>
-          </div>
-        </Box>
-      </Modal>
-    </main>
+          <Box
+            className={`d-flex align-items-center gap-5`}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "#fff",
+              boxShadow: 24,
+              p: 4,
+              borderRadius: 2,
+            }}
+          >
+            <div className="d-flex flex-column">
+              <Typography variant="h6">user: {editUser.user}</Typography>
+              <Typography variant="h6" sx={{ mt: 1 }}>
+                user id: {editUser.id}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Current Price: {editUser.price}$
+              </Typography>
+            </div>
+            <div className="d-flex flex-column gap-3">
+              <TextField
+                type="number"
+                defaultValue={0}
+                value={editUser.balance}
+                onChange={(e) =>
+                  setEditUser({ ...editUser, balance: +e.target.value })
+                }
+              />
+              <Button variant="contained" onClick={() => handleSubmitEdit()}>
+                submit
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+      </main>
+    </AdminLayout>
   );
 };
 

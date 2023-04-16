@@ -1,21 +1,22 @@
-import PanelAside from "../../src/components/PanelAside/PanelAside";
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { handleLoggedIn } from "../../src/features/userSlice/userSlice";
-import PanelProfile from "../../src/components/PanelProfile/PanelProfile";
-import PanelWallet from "../../src/components/PanelWallet/PanelWallet";
-import PanelDialog from "../../src/components/PanelDialog/PanelDialog";
-
+import PanelDialog from "../../components/PanelDialog/PanelDialog";
+import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
+import Head from "next/head";
 
 const UserPanel = () => {
   const dispatch = useDispatch();
 
   return (
-    <main className="d-flex userPanel bg-white">
-      <PanelDialog />
-    </main>
+    <DashboardLayout>
+      <Head>
+        <title>Dashboard</title>
+        <meta name="description" content="User dashboard" />
+      </Head>
+      <main className="d-flex userPanel bg-white">
+        <PanelDialog />
+      </main>
+    </DashboardLayout>
   );
 };
-
 
 export default UserPanel;
