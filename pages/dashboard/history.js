@@ -7,6 +7,8 @@ import {
   TableBody,
   TableHead,
   Chip,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { useState } from "react";
 import { MdAssignment } from "react-icons/md";
@@ -198,6 +200,215 @@ const History = () => {
       status: "Rejected",
     },
   ]);
+  const clonedHistory = [
+    {
+      product: "product1",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 1,
+      status: "Enable",
+    },
+    {
+      product: "product2",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 2,
+      status: "Disable",
+    },
+    {
+      product: "product3",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 3,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Enable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Disable",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Completed",
+    },
+    {
+      product: "product4",
+      quantity: 1,
+      date: "22-20-2022",
+      price: 4,
+      status: "Rejected",
+    },
+  ];
+  const [sort, setSort] = useState({ name: "All", code: 0 });
+
+  const existingStatus = [
+    { name: "All", code: 0 },
+    { name: "Rejected", code: 1 },
+    { name: "Completed", code: 2 },
+    { name: "Disable", code: 3 },
+    { name: "Enable", code: 4 },
+  ];
+
+  const handleSortByStatus = (e) => {
+    if (e.target.value === 0) {
+      setSort({ name: "All", code: 0 });
+      setHistory(clonedHistory);
+      return;
+    }
+    const newStatus = existingStatus.find(
+      (status) => status.code === e.target.value
+    );
+    const sortedHistory = clonedHistory.filter(
+      (history) => history.status === newStatus.name
+    );
+    setSort(newStatus);
+    setHistory(sortedHistory);
+  };
 
   return (
     <DashboardLayout>
@@ -213,6 +424,19 @@ const History = () => {
             </div>
             <h5>History</h5>
           </div>
+          <Select
+            className="my-3 w-25 ms-4"
+            value={sort.code}
+            onChange={handleSortByStatus}
+          >
+            {existingStatus.map(({ name, code }) => {
+              return (
+                <MenuItem key={code} value={code}>
+                  {name}
+                </MenuItem>
+              );
+            })}
+          </Select>
           <div className={styles.tableContainer}>
             <TableContainer className={styles.table}>
               <Table
