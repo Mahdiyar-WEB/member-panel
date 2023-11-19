@@ -40,6 +40,32 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  overflow: hidden; /* Add this to make sure the blurred section stays within the bounds. */
+}
+.bottomLandingEffect {
+  background-image: linear-gradient(to right, #1920a6, #018ae1);
+  height: 80px;
+  border: none;
+ margin: 0;
+ display: flex;
+ justify-content: center;
+ gap: 0 30px;
+}
+.routeHandler{
+  height: fit-content;
+  border-radius: 6px;
+  color: #fff;
+  outline: none;
+  border: none;
+  background: 
+  rgba(156, 163, 175, .2);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  transition: all .3s linear;
+}
+.routeHandler:hover{
+  background: 
+  rgba(156, 163, 175, .4);
 }
 .landing::before {
   position: absolute;

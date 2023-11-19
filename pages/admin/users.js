@@ -200,7 +200,7 @@ const users = () => {
                   </TableCell>
                   <TableCell align="center">{row.date}</TableCell>
                   <TableCell align="center">{row.price}$</TableCell>
-                  <TableCell align="center">
+                  <TableCell className="d-flex" align="center">
                     <Button
                       color={row.isBan ? "warning" : "error"}
                       onClick={() => handleBanUser(row.id)}

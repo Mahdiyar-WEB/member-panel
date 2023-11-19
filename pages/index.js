@@ -36,9 +36,11 @@ export default function Home() {
             <span>Us</span>
           </h4>
         </div>
-        <div className={`${styles.cloudyPicture}`}></div>
-        <button onClick={() => router.push("/dashboard")}>dashboard</button>
-        <button onClick={() => router.push("/admin/users")}>admin</button>
+        <div className={styles.bottomLandingEffect}>
+          <button className={styles.routeHandler} onClick={() => router.push("/dashboard")}>dashboard</button>
+          <button className={styles.routeHandler} onClick={() => router.push("/admin/users")}>admin</button>
+        </div>
+
         <Products />
         <About />
         <FAQ />

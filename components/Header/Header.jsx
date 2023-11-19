@@ -33,8 +33,8 @@ const Header = () => {
         className={`mx-auto rounded rounded-1 py-2 py-md-3 px-lg-5 px-4 ${styles.navbar}`}
       >
         <div className={styles.contentContainer}>
-          <Link href="/" className={`me-auto my-auto ${styles.active}`}>
-            Brand
+          <Link href="/" className={`me-auto my-auto text-nowrap ${styles.active}`}>
+            Member Panel
           </Link>
           <IconButton
             onClick={handleClick}
