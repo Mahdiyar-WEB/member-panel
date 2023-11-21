@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Telegram Members Sale Panel
 
-## Getting Started
+This repository contains the codebase for a Telegram Members Sale Panel. It's a web application developed to sell Telegram members, including both real and faux members, utilizing technologies such as Next.js, Axios, Bootstrap, Formik and Yup, React-Waypoint and MUI for CSS Classnames.
 
-First, run the development server:
+## Table of Contents
+- [About The Project](#about-the-project)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+
+## About The Project
+
+This project is designed to facilitate the sale of Telegram members. With this platform, users can easily purchase real or fake members for their Telegram groups or channels. The panel provides a user-friendly experience and carries out transactions smoothly and efficiently.
+
+## Technologies Used
+
+- **Next.js**: React framework for building JavaScript applications.
+- **Axios**: Promise-based HTTP client for the browser and Node.js.
+- **Bootstrap**: CSS framework directed at responsive, mobile-first front-end web development.
+- **Formik**: A small library that helps with handling form state and validation in React.
+- **Yup**: A JavaScript schema builder for value parsing and validation.
+- **React-Waypoint**: A React component that allows executing a function whenever you scroll to an element.
+- **MUI**: UI library for modern web development with an emphasis on responsive design and access to a wide variety of CSS classnames.
+
+## Features
+
+- Responsive design for superior user experience on various screen sizes
+- Efficient and reliable Telegram members sales process
+- Secure form handling and value validation
+- admin panel
+- user dashboard panel
+
+## Setup
+
+To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
 
 ```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Clone this repository
+git clone https://github.com/Mahdiyar-WEB/portfolio.git
+# Go into the repository
+cd portfolio
+# Install dependencies
+npm install
+# Run the app
+npm start
